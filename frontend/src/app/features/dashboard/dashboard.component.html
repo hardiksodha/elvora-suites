@@ -1,0 +1,15 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+  </div>
+
+  <div class="mat-card-grid">
+    <mat-card class="stat-card" *ngFor="let card of statCards" [routerLink]="card.route" style="cursor: pointer;">
+      <mat-card-content>
+        <mat-icon [style.color]="card.color" style="font-size: 40px; width: 40px; height: 40px;">{{ card.icon }}</mat-icon>
+        <div class="stat-number" [style.color]="card.color">{{ getValue(card.key) }}</div>
+        <div class="stat-label">{{ card.label }}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

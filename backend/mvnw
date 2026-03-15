@@ -1,0 +1,25 @@
+#!/bin/sh
+# Maven Wrapper script
+set -e
+
+MAVEN_WRAPPER_JAR=".mvn/wrapper/maven-wrapper.jar"
+MAVEN_WRAPPER_PROPERTIES=".mvn/wrapper/maven-wrapper.properties"
+
+# Read distributionUrl from properties
+DISTRIBUTION_URL=$(grep distributionUrl "$MAVEN_WRAPPER_PROPERTIES" | cut -d'=' -f2)
+WRAPPER_URL=$(grep wrapperUrl "$MAVEN_WRAPPER_PROPERTIES" | cut -d'=' -f2)
+
+# Download wrapper jar if missing
+if [ ! -f "$MAVEN_WRAPPER_JAR" ]; then
+    echo "Downloading Maven Wrapper..."
+    if command -v curl > /dev/null; then
+        curl -fsSL "$WRAPPER_URL" -o "$MAVEN_WRAPPER_JAR"
+    elif command -v wget > /dev/null; then
+        wget -q "$WRAPPER_URL" -O "$MAVEN_WRAPPER_JAR"
+    else
+        echo "Neither curl nor wget found. Please install one of them." >&2
+        exit 1
+    fi
+fi
+
+exec java -jar "$MAVEN_WRAPPER_JAR" "$DISTRIBUTION_URL" "$@"

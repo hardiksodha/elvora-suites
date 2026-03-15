@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>New Booking</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Guest</mat-label>
+      <mat-select formControlName="guestId">
+        <mat-option *ngFor="let g of guests" [value]="g.id">
+          {{ g.firstName }} {{ g.lastName }} ({{ g.email }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Room</mat-label>
+      <mat-select formControlName="roomId">
+        <mat-option *ngFor="let r of rooms" [value]="r.id">
+          {{ r.roomNumber }} - {{ r.roomType }} (${{ r.pricePerNight }}/night)
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Check-In Date</mat-label>
+      <input matInput [matDatepicker]="checkin" formControlName="checkInDate" [min]="minDate">
+      <mat-datepicker-toggle matIconSuffix [for]="checkin"></mat-datepicker-toggle>
+      <mat-datepicker #checkin></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Check-Out Date</mat-label>
+      <input matInput [matDatepicker]="checkout" formControlName="checkOutDate" [min]="minDate">
+      <mat-datepicker-toggle matIconSuffix [for]="checkout"></mat-datepicker-toggle>
+      <mat-datepicker #checkout></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName="notes" rows="2"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">Create Booking</button>
+</mat-dialog-actions>

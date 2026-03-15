@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit Room' : 'Add Room' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Room Number</mat-label>
+      <input matInput formControlName="roomNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Room Type</mat-label>
+      <mat-select formControlName="roomType">
+        <mat-option *ngFor="let t of roomTypes" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price Per Night ($)</mat-label>
+      <input matInput type="number" formControlName="pricePerNight">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Floor</mat-label>
+      <input matInput type="number" formControlName="floor">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Capacity</mat-label>
+      <input matInput type="number" formControlName="capacity">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let s of roomStatuses" [value]="s">{{ s }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">
+    {{ isEdit ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>

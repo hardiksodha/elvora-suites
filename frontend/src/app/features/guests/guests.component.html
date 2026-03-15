@@ -1,0 +1,50 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Guests</h1>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      <mat-icon>person_add</mat-icon> Add Guest
+    </button>
+  </div>
+
+  <mat-card style="margin-bottom: 16px; padding: 16px;">
+    <mat-form-field style="width: 300px;">
+      <mat-label>Search guests</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (ngModelChange)="loadGuests()" placeholder="Name or email...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <table mat-table [dataSource]="guests" class="full-width">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let g">{{ g.firstName }} {{ g.lastName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let g">{{ g.email }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let g">{{ g.phone }}</td>
+      </ng-container>
+      <ng-container matColumnDef="idType">
+        <th mat-header-cell *matHeaderCellDef>ID Type</th>
+        <td mat-cell *matCellDef="let g">{{ g.idType }}</td>
+      </ng-container>
+      <ng-container matColumnDef="idNumber">
+        <th mat-header-cell *matHeaderCellDef>ID Number</th>
+        <td mat-cell *matCellDef="let g">{{ g.idNumber }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let g" class="action-buttons">
+          <button mat-icon-button color="primary" (click)="openDialog(g)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="delete(g)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>
