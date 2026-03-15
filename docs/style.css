@@ -1,3 +1,23 @@
+/* ===== LAUNCH BANNER ===== */
+.launch-banner {
+  background: var(--gold);
+  color: var(--dark);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1001;
+  letter-spacing: 0.3px;
+}
+.launch-banner a {
+  color: var(--dark);
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+.launch-banner a:hover { opacity: 0.75; }
+
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -662,6 +682,62 @@ ul { list-style: none; }
 
 .guest strong { display: block; font-size: 0.9rem; color: var(--text); }
 .guest span { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ===== EARLY BIRD ===== */
+.early-bird {
+  background: var(--dark2);
+  padding: 100px 0;
+}
+
+.early-bird-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.early-bird-text .section-title { color: var(--white); }
+
+.early-bird-text p {
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.early-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.early-perks li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.92rem;
+}
+
+.early-perks li i { color: var(--gold); font-size: 0.8rem; }
+
+.early-bird-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+}
+
+.early-bird-form h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 28px;
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .early-bird-inner { grid-template-columns: 1fr; gap: 48px; }
+}
 
 /* ===== CONTACT ===== */
 .contact { background: var(--off-white); }

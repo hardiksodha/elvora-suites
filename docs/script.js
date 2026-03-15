@@ -43,9 +43,21 @@ if (bookingForm) {
   });
 }
 
+// Notify form submit
+const notifyForm = document.getElementById('notifyForm');
+const notifySuccess = document.getElementById('notifySuccess');
+
+if (notifyForm) {
+  notifyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    notifyForm.style.display = 'none';
+    notifySuccess.classList.add('show');
+  });
+}
+
 // Fade-in on scroll (Intersection Observer)
 const fadeEls = document.querySelectorAll(
-  '.room-card, .amenity-card, .testimonial-card, .gallery-item, .highlight-item, .about-badge, .stat'
+  '.room-card, .amenity-card, .gallery-item, .highlight-item, .about-badge, .stat, .early-perks li'
 );
 
 const observer = new IntersectionObserver((entries) => {
