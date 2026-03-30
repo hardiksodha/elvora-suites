@@ -31,35 +31,56 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Booking form submit
+// ===============================
+// FORM HANDLING (UPDATED)
+// ===============================
+
 const bookingForm = document.getElementById('bookingForm');
 const formSuccess = document.getElementById('formSuccess');
 
-if (bookingForm) {
-  bookingForm.addEventListener('submit', () => {
-    setTimeout(() => {
-      bookingForm.style.display = 'none';
-      formSuccess.classList.add('show');
-    }, 1000);
-  });
-}
-
-
-
-// Notify form submit
 const notifyForm = document.getElementById('notifyForm');
 const notifySuccess = document.getElementById('notifySuccess');
 
-if (notifyForm) {
-  notifyForm.addEventListener('submit', () => {
-    setTimeout(() => {
-      notifyForm.style.display = 'none';
-      notifySuccess.classList.add('show');
-    }, 1000);
+function handleFormSubmit(form, successElement) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.reset();
+        form.style.display = "none";
+        successElement.classList.add("show");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Error submitting form. Please try again.");
+    }
   });
 }
 
+// Apply to both forms
+if (bookingForm && formSuccess) {
+  handleFormSubmit(bookingForm, formSuccess);
+}
+
+if (notifyForm && notifySuccess) {
+  handleFormSubmit(notifyForm, notifySuccess);
+}
+
+// ===============================
 // Fade-in on scroll (Intersection Observer)
+// ===============================
 const fadeEls = document.querySelectorAll(
   '.room-card, .amenity-card, .gallery-item, .highlight-item, .about-badge, .stat, .early-perks li'
 );
@@ -81,9 +102,12 @@ fadeEls.forEach(el => {
   observer.observe(el);
 });
 
-// Set min date for date inputs to today
+// ===============================
+// Set min date for date inputs
+// ===============================
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const today = new Date().toISOString().split('T')[0];
+
 dateInputs.forEach(input => {
   input.setAttribute('min', today);
 });
