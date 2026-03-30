@@ -36,22 +36,26 @@ const bookingForm = document.getElementById('bookingForm');
 const formSuccess = document.getElementById('formSuccess');
 
 if (bookingForm) {
-  bookingForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    bookingForm.style.display = 'none';
-    formSuccess.classList.add('show');
+  bookingForm.addEventListener('submit', () => {
+    setTimeout(() => {
+      bookingForm.style.display = 'none';
+      formSuccess.classList.add('show');
+    }, 1000);
   });
 }
+
+
 
 // Notify form submit
 const notifyForm = document.getElementById('notifyForm');
 const notifySuccess = document.getElementById('notifySuccess');
 
 if (notifyForm) {
-  notifyForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    notifyForm.style.display = 'none';
-    notifySuccess.classList.add('show');
+  notifyForm.addEventListener('submit', () => {
+    setTimeout(() => {
+      notifyForm.style.display = 'none';
+      notifySuccess.classList.add('show');
+    }, 1000);
   });
 }
 
