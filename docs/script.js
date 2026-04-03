@@ -9,6 +9,47 @@ const notifyForm = document.getElementById('notifyForm');
 const notifySuccess = document.getElementById('notifySuccess');
 const checkInDate = document.getElementById('checkInDate');
 const checkOutDate = document.getElementById('checkOutDate');
+const FORM_TIMEOUT_MS = 30000;
+const GOOGLE_FORM_TIMEOUT_MS = 30000;
+
+const googleFormTargets = {
+  bookingForm: {
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdIdvLWojo8Q43E1yQyRhANmNiTZqBLeM94SZfwN7N4_Js63Q/formResponse',
+    buildPayload: (formData) => {
+      const checkIn = splitDateParts(formData.get('customer_checkin_date'));
+      const checkOut = splitDateParts(formData.get('customer_checkout_date'));
+      const payload = new URLSearchParams();
+
+      payload.set('entry.715896419', formData.get('customer_name') || '');
+      payload.set('entry.718966432', formData.get('customer_email') || '');
+      payload.set('entry.517937547_year', checkIn.year);
+      payload.set('entry.517937547_month', checkIn.month);
+      payload.set('entry.517937547_day', checkIn.day);
+      payload.set('entry.1795426448_year', checkOut.year);
+      payload.set('entry.1795426448_month', checkOut.month);
+      payload.set('entry.1795426448_day', checkOut.day);
+      payload.set('entry.1395717743', formData.get('customer_room_type') || '');
+      payload.set('entry.2108589423', formData.get('customer_guest_count') || '');
+      payload.set('entry.1106160743', formData.get('customer_contact_number') || '');
+      payload.set('entry.1793375818', formData.get('customer_special_request') || '');
+
+      return payload;
+    }
+  },
+  notifyForm: {
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSd4IdFONCwfPBJ5NkbxvwYwX0iS7lngeWgiGbR0is89rcktvQ/formResponse',
+    buildPayload: (formData) => {
+      const payload = new URLSearchParams();
+
+      payload.set('entry.2005620554', formData.get('customer_name') || '');
+      payload.set('entry.1045781291', formData.get('customer_email') || '');
+      payload.set('entry.1166974658', formData.get('customer_mobile') || '');
+      payload.set('entry.839337160', formData.get('customer_preference') || '');
+
+      return payload;
+    }
+  }
+};
 
 window.addEventListener('scroll', () => {
   if (navbar && window.scrollY > 60) {
@@ -46,6 +87,51 @@ function formatLocalDate(date) {
   return `${year}-${month}-${day}`;
 }
 
+function splitDateParts(value) {
+  if (!value || typeof value !== 'string') {
+    return { year: '', month: '', day: '' };
+  }
+
+  const [year = '', month = '', day = ''] = value.split('-');
+  return { year, month, day };
+}
+
+async function fetchWithTimeout(url, options, timeoutMs) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => {
+    controller.abort();
+  }, timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function submitToGoogleForm(form, formData) {
+  const target = googleFormTargets[form.id];
+
+  if (!target) {
+    return;
+  }
+
+  const payload = target.buildPayload(formData);
+
+  try {
+    await fetchWithTimeout(target.url, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: payload
+    }, GOOGLE_FORM_TIMEOUT_MS);
+  } catch (error) {
+    // Google Form logging is best-effort and must not affect the user flow.
+  }
+}
+
 function syncCheckoutDate() {
   if (!checkInDate || !checkOutDate) {
     return;
@@ -79,17 +165,19 @@ async function handleFormSubmit(form, successElement) {
   const formData = new FormData(form);
 
   try {
-    const response = await fetch(form.action, {
+    const response = await fetchWithTimeout(form.action, {
       method: form.method || 'POST',
       body: formData,
       headers: {
         Accept: 'application/json'
       }
-    });
+    }, FORM_TIMEOUT_MS);
 
     if (!response.ok) {
       throw new Error('Form submission failed');
     }
+
+    void submitToGoogleForm(form, formData);
 
     form.reset();
     form.style.display = 'none';
