@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <title>Elvora Suites | Premium stay in Bhowanipore Kolkata Near Kalighat</title>
-
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="-zDOD0c-t2l04BPUogVl4ilOBqPOGypq0fYcnvo7Z4I" />
-  <meta name="description" content="Elvora Suites is a premium hotel in Bhowanipore, Kolkata offering comfortable and budget-friendly stay near Kalighat Temple and Park Street. Book your stay today.">
-  <meta name="keywords" content="hotel in Bhowanipore or Bhowanipore Kolkata, stay near Kalighat Temple, budget hotel South Kolkata, Elvora Suites Kolkata">
-
+  <meta name="description" content="Elvora Suites is a premium hotel in Bhowanipore, Kolkata offering comfortable and budget-friendly stay near Kalighat Temple and Park Street. Book your stay today." />
+  <meta name="keywords" content="hotel in Bhowanipore or Bhowanipore Kolkata, stay near Kalighat Temple, budget hotel South Kolkata, Elvora Suites Kolkata" />
   <link rel="canonical" href="https://www.elvorasuites.com/" />
-  
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
 </head>
 <body>
 
@@ -41,7 +37,7 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="#contact" class="nav-btn">Register Interest</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks" type="button">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -99,8 +95,6 @@
     </div>
   </section>
 
-  
-  
   <!-- ABOUT -->
   <section class="about section" id="about">
     <div class="container two-col">
@@ -119,14 +113,13 @@
         <p>Elvora Suites is a soon-to-open boutique hotel nestled in Bhowanipore — one of South Kolkata's most vibrant and culturally rich neighbourhoods. We are designed for travellers who value comfort, character, and a genuine connection to the city.</p>
         <p>Thoughtfully designed rooms, warm service, and a love for Kolkata's energy — that is the promise of Elvora Suites. Whether you are here for business or leisure, we will make it feel like home.</p>
         <p>Elvora Suites is a premium hotel in Bhowanipore, Kolkata offering comfortable and budget-friendly rooms for families and business travelers. Conveniently located near Kalighat Temple, Park Street, and major South Kolkata attractions.</p>
-       
-        <p><Strong><u>Nearby Attractions</u></Strong></p>
-  
-      <p>Kalighat Temple – 5 minutes</p>
-      <p>Park Street – 10 minutes</p>
-     <p>Victoria Memorial – 15 minutes</p>
-      <p>South Kolkata shopping hubs</p>
- 
+
+        <p><strong><u>Nearby Attractions</u></strong></p>
+        <p>Kalighat Temple – 5 minutes</p>
+        <p>Park Street – 10 minutes</p>
+        <p>Victoria Memorial – 15 minutes</p>
+        <p>South Kolkata shopping hubs</p>
+
         <div class="about-stats">
           <div class="stat">
             <strong>23</strong>
@@ -171,7 +164,6 @@
               <li><i class="fa fa-snowflake"></i> Air Conditioned</li>
             </ul>
             <div class="room-footer">
-              <!-- div class="room-price">₹3,500 <span>/ night</span></div -->
               <a href="#contact" class="btn-small">Enquire</a>
             </div>
           </div>
@@ -192,7 +184,6 @@
               <li><i class="fa fa-tv"></i> Smart TV</li>
             </ul>
             <div class="room-footer">
-              <!-- div class="room-price">₹5,500 <span>/ night</span></div -->
               <a href="#contact" class="btn-small">Enquire</a>
             </div>
           </div>
@@ -213,7 +204,6 @@
               <li><i class="fa fa-mug-hot"></i> Minibar & Kettle</li>
             </ul>
             <div class="room-footer">
-              <!-- div class="room-price">₹8,500 <span>/ night</span></div -->
               <a href="#contact" class="btn-small">Enquire</a>
             </div>
           </div>
@@ -243,7 +233,7 @@
         </div>
         <div class="amenity-card">
           <i class="fa fa-mug-hot"></i>
-          <h4>Café & Lounge</h4>
+          <h4>Cafe & Lounge</h4>
           <p>Start your mornings with freshly brewed tea or coffee, light snacks, and a relaxed atmosphere.</p>
         </div>
         <div class="amenity-card">
@@ -303,7 +293,7 @@
         </div>
         <div class="gallery-item wide">
           <img src="https://images.unsplash.com/photo-1521783988139-89397d761dce?w=800&q=80" alt="Lounge" />
-          <div class="gallery-overlay"><span>Lounge & Café</span></div>
+          <div class="gallery-overlay"><span>Lounge & Cafe</span></div>
         </div>
         <div class="gallery-item">
           <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Meeting room" />
@@ -330,26 +320,26 @@
         </div>
         <div class="early-bird-form">
           <h3>Get Notified</h3>
-          <form id="notifyForm" method="POST" action="https://formspree.io/f/xvzvagov">
+          <form id="notifyForm" method="POST" action="https://formspree.io/f/xvzvagov" novalidate>
             <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" placeholder="Your name" name="customer_name" required />
+              <label for="notifyName">Full Name</label>
+              <input id="notifyName" type="text" placeholder="Your name" name="customer_name" autocomplete="name" required />
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="your@email.com" name="customer_email" required />
+              <label for="notifyEmail">Email</label>
+              <input id="notifyEmail" type="email" placeholder="your@email.com" name="customer_email" autocomplete="email" required />
             </div>
             <div class="form-group">
-              <label>Phone (optional)</label>
-              <input type="tel" placeholder="your mobile number" name="customer_mobile"/>
+              <label for="notifyPhone">Phone (optional)</label>
+              <input id="notifyPhone" type="tel" placeholder="your mobile number" name="customer_mobile" autocomplete="tel" />
             </div>
             <div class="form-group">
-              <label>Room Preference</label>
-              <select name="customer_preference">
+              <label for="notifyPreference">Room Preference</label>
+              <select id="notifyPreference" name="customer_preference">
                 <option value="">No preference</option>
-                <option>Superior Room</option>
-                <option>Deluxe Room</option>
-                <option>Junior Suite</option>
+                <option value="superior-room">Superior Room</option>
+                <option value="deluxe-room">Deluxe Room</option>
+                <option value="junior-suite">Junior Suite</option>
               </select>
             </div>
             <button type="submit" class="btn-primary full-width">Notify Me at Opening</button>
@@ -409,62 +399,57 @@
 
       <div class="booking-form">
         <h3>Send an Enquiry</h3>
-        <form  id="bookingForm" method="POST" action="https://formspree.io/f/mjgpwvzb" >
+        <form id="bookingForm" method="POST" action="https://formspree.io/f/mjgpwvzb" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="customer_name" placeholder="Your name" required />
+              <label for="fullName">Full Name</label>
+              <input id="fullName" type="text" name="customer_name" placeholder="Your name" autocomplete="name" required />
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="customer_email" placeholder="your@email.com" required />
+              <label for="email">Email</label>
+              <input id="email" type="email" name="customer_email" placeholder="your@email.com" autocomplete="email" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>Check-in Date</label>
-              <input type="date" name="customer_checkin_date" required />
+              <label for="checkInDate">Check-in Date</label>
+              <input id="checkInDate" type="date" name="customer_checkin_date" required />
             </div>
             <div class="form-group">
-              <label>Check-out Date</label>
-              <input type="date" name="customer_checkout_date" required />
+              <label for="checkOutDate">Check-out Date</label>
+              <input id="checkOutDate" type="date" name="customer_checkout_date" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>Room Type</label>
-              <select name="customer_room_type>
-                <option value="" ">Select a room</option>
-                <option>Superior Room</option>
-                <option>Deluxe Room</option>
-                <option>Junior Suite</option>
+              <label for="roomType">Room Type</label>
+              <select id="roomType" name="customer_room_type" required>
+                <option value="">Select a room</option>
+                <option value="superior-room">Superior Room</option>
+                <option value="deluxe-room">Deluxe Room</option>
+                <option value="junior-suite">Junior Suite</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Guests</label>
-              <select name="customer_guest_count">
-                <option>1 Guest</option>
-                <option>2 Guests</option>
-                <option>3 Guests</option>
+              <label for="guests">Guests</label>
+              <select id="guests" name="customer_guest_count" required>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>Contact Number</label>
-              <input type="text" name="customer_contact_number" placeholder="contact number" />
+              <label for="contactNumber">Contact Number</label>
+              <input id="contactNumber" type="tel" name="customer_contact_number" placeholder="contact number" autocomplete="tel" />
             </div>
-            <!-- div class="form-group">
-              <label>Email</label>
-              <input type="email" name="customer_email" placeholder="your@email.com" required />
-          </div -->
+            <div class="form-group">
+              <label for="specialRequests">Message</label>
+              <textarea id="specialRequests" placeholder="Any questions or special requests..." rows="3" name="customer_special_request"></textarea>
+            </div>
           </div>
-          
-          <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Any questions or special requests..." rows="3" name="customer_special_request"></textarea>
-          </div>
-          <input type="hidden" name="_subject" value="New Early Interest - Elvora Suites">
+          <input type="hidden" name="_subject" value="New Early Interest - Elvora Suites" />
           <button type="submit" class="btn-primary full-width">Send Enquiry</button>
         </form>
         <div class="form-success" id="formSuccess">
@@ -549,6 +534,6 @@
   },
   "url": "https://www.elvorasuites.com"
 }
-</script>
+  </script>
 </body>
 </html>
