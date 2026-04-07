@@ -891,21 +891,20 @@ ul { list-style: none; }
 .form-success.show { display: block; }
 
 /* ===== MAP ===== */
-.map-section { height: 220px; background: #e8e0d0; position: relative; }
-
-.map-placeholder {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: var(--text-muted);
-  background: linear-gradient(135deg, #f0ebe0, #e0d8c8);
+.map-section {
+  height: 320px;
+  background: #e8e0d0;
+  position: relative;
+  overflow: hidden;
 }
-.map-placeholder i { font-size: 2rem; color: var(--gold); }
-.map-placeholder p { font-weight: 600; color: var(--text); }
-.map-placeholder span { font-size: 0.85rem; }
+
+.map-embed,
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
 
 /* ===== FOOTER ===== */
 .footer { background: var(--dark); color: var(--white); padding: 70px 0 0; }
